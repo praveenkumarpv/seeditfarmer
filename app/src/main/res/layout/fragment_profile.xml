@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/personimage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/profilebg"
+        android:src="@drawable/person"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.112" />
+
+    <EditText
+        android:id="@+id/personnameid"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:backgroundTint="@color/purple_200"
+        android:hint="Name"
+        android:textColor="@color/purple_200"
+        android:textColorHint="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/personemailid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personimage"
+        app:layout_constraintVertical_bias="0.795" />
+
+    <EditText
+        android:id="@+id/personemailid"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:ems="10"
+        android:hint="Emailid"
+        android:textColor="@color/purple_200"
+        android:textColorHint="@color/purple_200"
+        android:backgroundTint="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/personaddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/personaddress"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:hint="Age"
+        android:textColor="@color/purple_200"
+        android:textColorHint="@color/purple_200"
+        android:backgroundTint="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.614" />
+
+    <EditText
+        android:id="@+id/personphonenumber"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/purple_200"
+        android:ems="10"
+        android:hint="phone no"
+        android:inputType="textMultiLine"
+        android:textColor="@color/purple_200"
+        android:textColorHint="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personaddress" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="188dp"
+        android:layout_height="59dp"
+        android:text="submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personaddress" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

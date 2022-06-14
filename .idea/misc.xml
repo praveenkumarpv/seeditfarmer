@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/add.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/addperson.xml" value="0.169" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/bottamnavigationbg.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/edittextbackground.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/iadd_photo.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/loginbuttonbackground.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/order.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/person.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/profilebg.xml" value="0.1525" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/search.xml" value="0.169" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_addproduct.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_chatview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_homeactivity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_patientdetailedview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_productview.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/activity_viewpatient.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/bottamnavigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/chatlist.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/chatmessagelayout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/conformationlayout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_addproduct.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_homefragment.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_myorder.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_order.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_profile.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/orderlayout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/prescription.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/productlayout.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/searchview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/menu/bottamnavigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/menu/farmermenu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.169" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.169" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

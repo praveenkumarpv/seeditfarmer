@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".productview">
+    <ImageView
+        android:id="@+id/productimagevw"
+        android:layout_width="160dp"
+        android:layout_height="152dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051"
+        app:srcCompat="@drawable/iadd_photo" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="215dp"
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/productimagevw"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/productnametv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:hint="Product name"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="₹"
+                android:textColor="@color/green"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/productpricetv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:backgroundTint="@color/green"
+                android:gravity="center"
+                android:hint="Price"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/productdetaillayout"
+        android:layout_width="346dp"
+        android:layout_height="240dp"
+        android:background="@drawable/edittextbackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.586">
+
+    <TextView
+        android:id="@+id/productdiscriptiontv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        android:textAlignment="center"
+        android:hint="Product discription"
+        android:inputType="textMultiLine"
+        android:textColor="@color/green"
+        android:textColorHint="@color/green"
+        android:textSize="18dp"
+       />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="391dp"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productdetaillayout"
+        app:layout_constraintVertical_bias="0.759">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/chatproduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Chat"
+            android:textColor="@color/white"
+            android:layout_weight="0.5"
+            android:background="#3CB508"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buyproduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0.5"
+            android:text="Buy"
+            android:textColor="@color/white"
+            android:background="@color/green"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dis"
+        android:layout_width="178dp"
+        android:layout_height="41dp"
+        android:text="Discription"
+        android:gravity="center"
+        android:textColor="@color/green"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/productdetaillayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

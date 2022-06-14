@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/ic_launcher_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/condainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.746" />
+
+    <LinearLayout
+        android:id="@+id/condainer"
+        android:layout_width="352dp"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73">
+
+        <LinearLayout
+            android:id="@+id/loginform"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/loginemailid"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edittextbackground"
+                android:hint="Email id"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+
+            <EditText
+                android:id="@+id/loginpassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edittextbackground"
+                android:hint="Password"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+            <RadioGroup
+                android:id="@+id/selectorradiobts"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/doctors"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/purple_200"
+                    android:backgroundTint="@color/purple_200"
+                    android:buttonTint="@color/purple_200"
+                    android:text="Doctor"/>
+                <RadioButton
+                    android:id="@+id/patients"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/purple_200"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/purple_200"
+                    android:buttonTint="@color/purple_200"
+                    android:text="Patient"/>
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Not registed yet?"
+                    android:textColor="@color/purple_200" />
+
+                <TextView
+                    android:id="@+id/registertxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:text="Register"
+                    android:textColor="#194AAC" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginbt"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/loginbuttonbackground"
+                android:text="Login"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/registerform"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/registername"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edittextbackground"
+                android:hint="Name"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+            <EditText
+                android:id="@+id/registeremailid"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edittextbackground"
+                android:hint="Email id"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+            <EditText
+                android:id="@+id/registerphonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edittextbackground"
+                android:hint="Phone Number"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+
+            <EditText
+                android:id="@+id/registerpassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edittextbackground"
+                android:hint="Password"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <RadioGroup
+                    android:id="@+id/selectorradiobt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/doctor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/purple_200"
+                        android:backgroundTint="@color/purple_200"
+                        android:buttonTint="@color/purple_200"
+                        android:text="Doctor"/>
+                    <RadioButton
+                        android:id="@+id/patient"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/purple_200"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="@color/purple_200"
+                        android:buttonTint="@color/purple_200"
+                        android:text="Patient"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/registerbt"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/loginbuttonbackground"
+                android:text="register"
+                android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/logintext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="15dp"
+                android:letterSpacing="0.1"
+                android:textColor="@color/purple_200"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/appname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/armata"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="Doctor care"
+        android:textColor="@color/purple_200"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.076" />
+</androidx.constraintlayout.widget.ConstraintLayout>

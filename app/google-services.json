@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "382758472583",
+    "project_id": "seedit-14433",
+    "storage_bucket": "seedit-14433.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382758472583:android:1506c33459c494f7dbe122",
+        "android_client_info": {
+          "package_name": "com.m24.seeditfarmer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382758472583-nenh4l8d7dom254fum33mlv94lhfsfeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtkVbSR9alJb4qFsSbyy7KuWVe54JaXG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382758472583-nenh4l8d7dom254fum33mlv94lhfsfeq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homefragment">
+
+    <fragment
+        android:id="@+id/chat2"
+        android:name="com.m24.seeditfarmer.chat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/homefragment"
+        android:name="com.m24.seeditfarmer.Homefragment"
+        android:label="fragment_homefragment"
+        tools:layout="@layout/fragment_homefragment" >
+        <action
+            android:id="@+id/action_homefragment_to_addproduct"
+            app:destination="@id/addproduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.m24.seeditfarmer.profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/addproduct"
+        android:name="com.m24.seeditfarmer.Addproduct"
+        android:label="fragment_addproduct"
+        tools:layout="@layout/fragment_addproduct" />
+    <fragment
+        android:id="@+id/order2"
+        android:name="com.m24.seeditfarmer.order"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
+</navigation>
