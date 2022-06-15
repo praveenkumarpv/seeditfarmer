@@ -7,7 +7,7 @@ public class userdataupdater {
     String phonenumber;
     String address;
     String selector;
-    String age;
+    String age,bp,bg;
     public userdataupdater() {
     }
 
@@ -22,7 +22,7 @@ public class userdataupdater {
         this.selector = selector;
     }
 
-    public userdataupdater(String uid, String name, String emailid, String phonenumber, String address, String selector, String age) {
+    public userdataupdater(String uid, String name, String emailid, String phonenumber, String address, String selector, String age, String bp, String bg) {
         this.uid = uid;
         this.name = name;
         this.emailid = emailid;
@@ -30,6 +30,24 @@ public class userdataupdater {
         this.address = address;
         this.selector = selector;
         this.age = age;
+        this.bp = bp;
+        this.bg = bg;
+    }
+
+    public String getBp() {
+        return bp;
+    }
+
+    public void setBp(String bp) {
+        this.bp = bp;
+    }
+
+    public String getBg() {
+        return bg;
+    }
+
+    public void setBg(String bg) {
+        this.bg = bg;
     }
 
     public String getAge() {

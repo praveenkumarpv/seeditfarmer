@@ -31,8 +31,9 @@ import helperclass.*;
 
 public class addproduct extends AppCompatActivity {
     private ImageView addproductimg;
-    private EditText adpatientname,adpatientage,adpatientdiscription,adpatientemailid,date;
-    String adpatientnametext,adpatientagetxt,adpatientemailtext,adpatientdiscriptiontxt,imagestring="no",doctoruid,activity,uids,dates,adpatientphoneno="";
+    private EditText adpatientname,adpatientage,adpatientdiscription,adpatientemailid,date,age,addbp,addbg;
+    String adpatientnametext,adpatientagetxt,adpatientemailtext,adpatientdiscriptiontxt,imagestring="no",
+            doctoruid,activity,uids,dates,adpatientphoneno="",agetxt,addbptxt="",addbgtxt="";
     private Button deletbt,submitbt;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri image,downloaduri;
@@ -63,6 +64,9 @@ public class addproduct extends AppCompatActivity {
         deletbt = findViewById(R.id.deletproduct);
         submitbt = findViewById(R.id.submitproduct);
         date = findViewById(R.id.date);
+        age = findViewById(R.id.patientageadd);
+        addbg = findViewById(R.id.adbg);
+        addbp = findViewById(R.id.adbp);
 //        Bundle editproduct = getIntent().getExtras();
 //        if (editproduct != null) {
 //            activity = editproduct.getString("Activity","");
@@ -90,11 +94,14 @@ public class addproduct extends AppCompatActivity {
                 adpatientemailtext = adpatientemailid.getText().toString().trim();
                 adpatientdiscriptiontxt = adpatientdiscription.getText().toString().trim();
                 dates = date.getText().toString().trim();
+                agetxt = age.getText().toString().trim();
+                addbgtxt = addbg.getText().toString().trim();
+                addbptxt = addbp.getText().toString().trim();
                 mAuth.createUserWithEmailAndPassword(adpatientemailtext,adpatientemailtext).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         uids = authResult.getUser().getUid();
-                        userdataupdater user = new userdataupdater(uids,adpatientnametext,adpatientemailtext,adpatientphoneno,"","patient");
+                        userdataupdater user = new userdataupdater(uids,adpatientnametext,adpatientemailtext,adpatientphoneno,"","patient",agetxt,addbptxt,addbgtxt);
                             db.collection("Doctorappuserdata").document(adpatientemailtext).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {

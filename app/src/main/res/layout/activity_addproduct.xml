@@ -20,16 +20,18 @@
         app:srcCompat="@drawable/iadd_photo" />
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:orientation="vertical"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/productimageadd"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.053">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -41,59 +43,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.2"
-                android:hint="Patient name"
-                android:textColor="@color/purple_200"
                 android:backgroundTint="@color/purple_200"
-                android:textColorHint="@color/purple_200"
-                android:textAlignment="center"/>
+                android:hint="Patient name"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
+
             <EditText
                 android:id="@+id/patientageadd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.9"
+                android:backgroundTint="@color/purple_200"
                 android:hint="Age"
                 android:textAlignment="center"
-                android:textColorHint="@color/purple_200"
                 android:textColor="@color/purple_200"
-                android:backgroundTint="@color/purple_200"/>
+                android:textColorHint="@color/purple_200" />
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="₹"
-                android:textSize="25dp"
-                android:layout_weight="0.8"
-                android:visibility="gone"
-                android:gravity="center"
-                android:textColor="@color/green"/>
+
             <EditText
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.4"
-                android:hint="Date"
-                android:textColor="@color/purple_200"
                 android:backgroundTint="@color/purple_200"
-                android:textColorHint="@color/purple_200"
-                android:textAlignment="center"/>
+                android:hint="Date"
+                android:textAlignment="center"
+                android:textColor="@color/purple_200"
+                android:textColorHint="@color/purple_200" />
 
             <EditText
                 android:id="@+id/patientemailidadd"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:hint="Email id"
                 android:layout_marginStart="10dp"
-                android:textColorHint="@color/purple_200"
+                android:layout_weight="0.2"
+                android:backgroundTint="@color/purple_200"
+                android:hint="Email id"
                 android:textColor="@color/purple_200"
-                android:backgroundTint="@color/purple_200"/>
+                android:textColorHint="@color/purple_200" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="₹"
+                android:textColor="@color/green"
+                android:textSize="25dp"
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -103,18 +109,18 @@
         android:id="@+id/addproductdiscription"
         android:layout_width="341dp"
         android:layout_height="309dp"
+        android:backgroundTint="@color/purple_200"
         android:ems="10"
         android:gravity="start|top"
         android:hint="prescription"
         android:inputType="textMultiLine"
         android:textColor="@color/purple_200"
-        android:backgroundTint="@color/purple_200"
         android:textColorHint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563" />
+        app:layout_constraintVertical_bias="0.668" />
 
     <LinearLayout
         android:layout_width="391dp"
@@ -151,5 +157,57 @@
             android:text="Add"
             android:textColor="@color/white"
             android:background="@drawable/loginbuttonbackground"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/addproductdiscription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="BP :"
+            android:textColor="@color/purple_200"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_weight="0.8"/>
+        <EditText
+            android:id="@+id/adbp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:layout_marginEnd="5dp"
+            android:backgroundTint="@color/purple_200"
+            android:textColor="@color/purple_200"
+            android:textColorHint="@color/purple_200"
+            android:textAlignment="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="BG :"
+            android:textColor="@color/purple_200"
+            android:textSize="20dp"
+            android:layout_marginStart="5dp"
+            android:gravity="center"
+            android:layout_weight="0.8"/>
+        <EditText
+            android:id="@+id/adbg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:backgroundTint="@color/purple_200"
+            android:textColor="@color/purple_200"
+            android:textColorHint="@color/purple_200"
+            android:textAlignment="center"/>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

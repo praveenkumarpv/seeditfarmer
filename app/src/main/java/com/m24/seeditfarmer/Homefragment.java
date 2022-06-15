@@ -23,7 +23,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -37,6 +39,7 @@ public class Homefragment extends Fragment {
     RecyclerView productrecycler,prisview;
     FirestoreRecyclerAdapter farmeradapter,useradapter;
     ConstraintLayout doctorv,patientv;
+    TextView welcomenote,bgtv,bptv;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -77,10 +80,14 @@ public class Homefragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_homefragment, container, false);
 
         doctorv = view.findViewById(R.id.doctorview);
+        patientv = view.findViewById(R.id.patientviewlayout);
         productrecycler = view.findViewById(R.id.productrecyclerview);
         prisview = view.findViewById(R.id.userviewprescription);
         addfab = view.findViewById(R.id.addpatientfab);
         viewfab = view.findViewById(R.id.patientview);
+        welcomenote = view.findViewById(R.id.welcomenote);
+        bgtv = view.findViewById(R.id.bgtextview);
+        bptv = view.findViewById(R.id.bptextview);
         addfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,44 +104,55 @@ public class Homefragment extends Fragment {
         });
         if (selected.equals("doctor")){
             addfab.setVisibility(View.VISIBLE);
-            Query farmerquery = FirebaseFirestore.getInstance().collection("Product").whereEqualTo("farmeruid",uid);
-            FirestoreRecyclerOptions<productupdater> farmerproduct = new FirestoreRecyclerOptions.Builder<productupdater>()
-                    .setQuery(farmerquery, productupdater.class)
-                    .build();
-            farmeradapter = new FirestoreRecyclerAdapter<productupdater, productview>(farmerproduct){
-
-                @NonNull
-                @Override
-                public productview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.productlayout,parent,false);
-                    return new productview(view);
-                }
-
-                @Override
-                protected void onBindViewHolder(@NonNull productview holder, int position, @NonNull productupdater model) {
-                    Glide.with(getContext()).load(model.getProductimage()).into(holder.productimage);
-                    holder.productname.setText(model.getProductname());
-                    holder.productprice.setText("₹-"+model.getProductprice());
-                    holder.productlayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent editproduct = new Intent(getActivity(), addproduct.class);
-                            editproduct.putExtra("Activity","edit");
-                            editproduct.putExtra("productname",model.getProductname());
-                            editproduct.putExtra("productprice",model.getProductprice());
-                            editproduct.putExtra("productdiscription",model.getProductdiscription());
-                            editproduct.putExtra("productimage",model.getProductimage());
-                            editproduct.putExtra("farmeruid",model.getFarmeruid());
-                            startActivity(editproduct);
-                        }
-                    });
-                }
-            };
-            productrecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-            productrecycler.setItemAnimator(null);
-            productrecycler.setAdapter(farmeradapter);
+            patientv.setVisibility(View.GONE);
+            doctorv.setVisibility(View.VISIBLE);
+//            Query farmerquery = FirebaseFirestore.getInstance().collection("Product").whereEqualTo("farmeruid",uid);
+//            FirestoreRecyclerOptions<productupdater> farmerproduct = new FirestoreRecyclerOptions.Builder<productupdater>()
+//                    .setQuery(farmerquery, productupdater.class)
+//                    .build();
+//            farmeradapter = new FirestoreRecyclerAdapter<productupdater, productview>(farmerproduct){
+//
+//                @NonNull
+//                @Override
+//                public productview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.productlayout,parent,false);
+//                    return new productview(view);
+//                }
+//
+//                @Override
+//                protected void onBindViewHolder(@NonNull productview holder, int position, @NonNull productupdater model) {
+//                    Glide.with(getContext()).load(model.getProductimage()).into(holder.productimage);
+//                    holder.productname.setText(model.getProductname());
+//                    holder.productprice.setText("₹-"+model.getProductprice());
+//                    holder.productlayout.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            Intent editproduct = new Intent(getActivity(), addproduct.class);
+//                            editproduct.putExtra("Activity","edit");
+//                            editproduct.putExtra("productname",model.getProductname());
+//                            editproduct.putExtra("productprice",model.getProductprice());
+//                            editproduct.putExtra("productdiscription",model.getProductdiscription());
+//                            editproduct.putExtra("productimage",model.getProductimage());
+//                            editproduct.putExtra("farmeruid",model.getFarmeruid());
+//                            startActivity(editproduct);
+//                        }
+//                    });
+//                }
+//            };
+//            productrecycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+//            productrecycler.setItemAnimator(null);
+//            productrecycler.setAdapter(farmeradapter);
         }
         else{
+            FirebaseFirestore.getInstance().collection("Doctorappuserdata").document(uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    userdataupdater userdataupdater = documentSnapshot.toObject(userdataupdater.class);
+                    welcomenote.setText("Hello,"+userdataupdater.getName());
+                    bgtv.setText(userdataupdater.getBg());
+                    bptv.setText(userdataupdater.getBp());
+                                }
+            });
             Query pe = FirebaseFirestore.getInstance().collection("Doctorappuserdata").document(uid).collection("prescription");
             FirestoreRecyclerOptions<prescription> pres = new FirestoreRecyclerOptions.Builder<prescription>()
                     .setQuery(pe, prescription.class)
@@ -182,7 +200,7 @@ public class Homefragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (selected.equals("doctor")){
-            farmeradapter.startListening();
+          //  farmeradapter.startListening();
         }else{
             useradapter.startListening();
         }
@@ -192,7 +210,7 @@ public class Homefragment extends Fragment {
     public void onStop() {
         super.onStop();
         if (selected.equals("doctor")){
-            farmeradapter.stopListening();
+            //farmeradapter.stopListening();
         }else{
             useradapter.stopListening();
         }

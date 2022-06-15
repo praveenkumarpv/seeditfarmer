@@ -145,11 +145,64 @@
                     android:textColor="@color/purple_200"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/addproductdiscription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="BP :"
+                    android:textColor="@color/purple_200"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:layout_weight="0.8"/>
+                <EditText
+                    android:id="@+id/dbp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="@color/purple_200"
+                    android:textColor="@color/purple_200"
+                    android:textColorHint="@color/purple_200"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="BG :"
+                    android:textColor="@color/purple_200"
+                    android:textSize="20dp"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center"
+                    android:layout_weight="0.8"/>
+                <EditText
+                    android:id="@+id/dbg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:backgroundTint="@color/purple_200"
+                    android:textColor="@color/purple_200"
+                    android:textColorHint="@color/purple_200"
+                    android:textAlignment="center"/>
+
+
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/adpriscription"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:ems="10"
+                android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="start|top"
@@ -160,25 +213,36 @@
                 android:background="@drawable/edittextbackground"
                 android:textColorHint="@color/purple_200"
                 />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/prescriptionaddbt"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:text="Add"
-                android:textColor="@color/white"
-                android:background="@drawable/loginbuttonbackground"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/prescriptionoldviewbt"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:text="view old prescription"
-                android:textColor="@color/white"
-                android:background="@drawable/loginbuttonbackground"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/prescriptionaddbt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginEnd="5dp"
+                    android:text="Add"
+                    android:textColor="@color/white"
+                    android:background="@drawable/loginbuttonbackground"
+                    android:layout_gravity="center"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/prescriptionoldviewbt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:layout_marginStart="5dp"
+                    android:text="view old prescription"
+                    android:textColor="@color/white"
+                    android:background="@drawable/loginbuttonbackground"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -32,10 +32,10 @@ import helperclass.userdataupdater;
 public class patientdetailedview extends AppCompatActivity {
     Button addprescription,viewoldpriscription,back;
     TextView name,age;
-    EditText prescriptionnote,date;
+    EditText prescriptionnote,date,dbp,dbg;
     String patientuid;
     private FirebaseFirestore db;
-    String doctoruid,datetxt,discriptio;
+    String doctoruid,datetxt,discriptio,dbptxt,dbgtxt;
     LinearLayout addview,oldview;
     RecyclerView oldpriscriptionview;
     FirestoreRecyclerAdapter prescriptionadp;
@@ -58,6 +58,8 @@ public class patientdetailedview extends AppCompatActivity {
         oldview = findViewById(R.id.oldpriscriptonlayout);
         oldpriscriptionview = findViewById(R.id.oldpriscriptonview);
         back = findViewById(R.id.back);
+        dbg = findViewById(R.id.dbg);
+        dbp = findViewById(R.id.dbp);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +88,11 @@ public class patientdetailedview extends AppCompatActivity {
             public void onClick(View view) {
               datetxt = date.getText().toString().trim();
               discriptio = prescriptionnote.getText().toString();
+              dbgtxt = dbg.getText().toString().trim();
+              dbptxt = dbp.getText().toString().trim();
+              if (!dbgtxt.isEmpty() && !dbptxt.isEmpty()){
+                  db.collection("Doctorappuserdata").document(patientuid).update("bg",dbgtxt,"bp",dbptxt);
+              }
               if (datetxt.isEmpty() || discriptio.isEmpty()){
                   Toast.makeText(patientdetailedview.this, "fill the form", Toast.LENGTH_SHORT).show();
               }else{

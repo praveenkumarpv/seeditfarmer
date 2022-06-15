@@ -30,7 +30,7 @@ public class profile extends Fragment {
     Button submit;
     CircleImageView personprofileimage;
     FirebaseFirestore db;
-    String uid,selected,nametxt,emailidtxt,addresstxt,phonenotxt;
+    String uid,selected,nametxt,emailidtxt,addresstxt,phonenotxt,pbptxt,pbgtxt;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -103,6 +103,9 @@ public class profile extends Fragment {
                         personnameed.setText(userdataupdater.getName());
                         emailided.setText(userdataupdater.getEmailid());
                         addressed.setText(userdataupdater.getAge());
+                        phoneno.setText(userdataupdater.getPhonenumber());
+                        pbptxt = userdataupdater.getBp();
+                        pbgtxt = userdataupdater.getBg();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -124,7 +127,7 @@ public class profile extends Fragment {
                             Toast.makeText(getContext(), "Empty feilds!", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            userdataupdater userdataupdater = new userdataupdater(uid,nametxt,emailidtxt,phonenotxt,"",selected,addresstxt);
+                            userdataupdater userdataupdater = new userdataupdater(uid,nametxt,emailidtxt,phonenotxt,"",selected,addresstxt,pbptxt,pbgtxt);
                             db.collection("Doctorappuserdata").document(uid).set(userdataupdater).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
