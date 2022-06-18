@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/account_circle.xml" value="0.1715" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/add.xml" value="0.1525" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/addperson.xml" value="0.169" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/drawable/bottamnavigationbg.xml" value="0.1525" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/chatlist.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/chatmessagelayout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/conformationlayout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/drbook.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_addproduct.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/AndroidStudioProjects/flutter_app/seeditfarmer/app/src/main/res/layout/fragment_homefragment.xml" value="0.2246376811594203" />

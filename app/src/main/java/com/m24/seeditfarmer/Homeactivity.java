@@ -58,10 +58,10 @@ public class Homeactivity extends AppCompatActivity {
 //                        fragment = new chat();
 //                        fragmenttransation(fragment);
 //                        break;
-//                    case R.id.myorder:
-//                        fragment = new order();
-//                        fragmenttransation(fragment);
-//                        break;
+                    case R.id.myorder:
+                        fragment = new myorder();
+                        fragmenttransation(fragment);
+                        break;
                     case R.id.myprofile:
                         fragment = new profile();
                         fragmenttransation(fragment);
@@ -86,10 +86,10 @@ public class Homeactivity extends AppCompatActivity {
 //                        fragment = new chat();
 //                        fragmenttransation(fragment);
 //                        break;
-//                    case R.id.myprofile:
-//                        fragment = new profile();
-//                        fragmenttransation(fragment);
-//                        break;
+                    case R.id.myprofile:
+                        fragment = new profile();
+                        fragmenttransation(fragment);
+                        break;
                         case R.id.order:
                         fragment = new order();
                         fragmenttransation(fragment);

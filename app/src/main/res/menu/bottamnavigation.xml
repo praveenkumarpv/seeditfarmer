@@ -8,10 +8,10 @@
 <!--        android:id="@+id/chat"-->
 <!--        android:icon="@drawable/chat_bubble"-->
 <!--        android:title="Chat"/>-->
-<!--    <item-->
-<!--        android:id="@+id/myorder"-->
-<!--        android:icon="@drawable/myorder"-->
-<!--        android:title="My order"/>-->
+    <item
+        android:id="@+id/myorder"
+        android:icon="@drawable/myorder"
+        android:title="My Booking"/>
 
     <item
         android:id="@+id/myprofile"

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,34 +79,29 @@ public class order extends Fragment {
        }else{
            hint = "userdata";
        }
-        Query orders = db.collection(hint).document(userid).collection("Order");
-        FirestoreRecyclerOptions<orderupdater> orderviewbuilder = new FirestoreRecyclerOptions.Builder<orderupdater>()
-                .setQuery(orders, orderupdater.class)
+        Query orders = db.collection("booking").whereEqualTo("drid",userid);
+        FirestoreRecyclerOptions<bookingupdater> orderviewbuilder = new FirestoreRecyclerOptions.Builder<bookingupdater>()
+                .setQuery(orders, bookingupdater.class)
                 .build();
-        orderadapter = new FirestoreRecyclerAdapter<orderupdater,orderview>(orderviewbuilder){
+        orderadapter = new FirestoreRecyclerAdapter<bookingupdater,orderview>(orderviewbuilder){
+
             @NonNull
             @Override
             public orderview onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orderlayout,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.drbook,parent,false);
                 return new orderview(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull orderview holder, int position, @NonNull orderupdater model) {
-              holder.orderviewname.setText(model.getProductname());
-              holder.orderviewprice.setText(model.getProductpric());
-              db.collection("userdata").document(model.getUserid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                  @Override
-                  public void onSuccess(DocumentSnapshot documentSnapshot) {
-                  userdataupdater user = documentSnapshot.toObject(userdataupdater.class);
-                  holder.orderviewaddress.setText(user.getName() +"\n"+user.getAddress());
-                  }
-              }).addOnFailureListener(new OnFailureListener() {
-                  @Override
-                  public void onFailure(@NonNull Exception e) {
-                      Toast.makeText(getContext(), "Failed to load Address", Toast.LENGTH_SHORT).show();
-                  }
-              });
+            protected void onBindViewHolder(@NonNull orderview holder, int position, @NonNull bookingupdater model) {
+               db.collection("Doctorappuserdata").document(model.getUserid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                   @Override
+                   public void onSuccess(DocumentSnapshot documentSnapshot) {
+                       userdataupdater userdataupdater = documentSnapshot.toObject(userdataupdater.class);
+                    holder.drname.setText(userdataupdater.getName());
+                    holder.book.setVisibility(View.GONE);
+                   }
+               });
             }
         };
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -119,12 +115,15 @@ public class order extends Fragment {
 
 
     private class orderview extends RecyclerView.ViewHolder {
-       TextView orderviewname,orderviewprice,orderviewaddress;
+       TextView orderviewname,orderviewprice,orderviewaddress,drname;
+        Button book;
         public orderview(@NonNull View itemView) {
             super(itemView);
-            orderviewname = itemView.findViewById(R.id.orderproductname);
-            orderviewprice = itemView.findViewById(R.id.orderproductprice);
-            orderviewaddress = itemView.findViewById(R.id.orderproductaddress);
+//            orderviewname = itemView.findViewById(R.id.orderproductname);
+//            orderviewprice = itemView.findViewById(R.id.orderproductprice);
+//            orderviewaddress = itemView.findViewById(R.id.orderproductaddress);
+            book= itemView.findViewById(R.id.drbookbutton);
+            drname = itemView.findViewById(R.id.drname);
 
         }
     }
