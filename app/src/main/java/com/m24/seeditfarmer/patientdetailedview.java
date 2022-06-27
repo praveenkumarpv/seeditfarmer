@@ -24,6 +24,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import helperclass.prescription;
@@ -39,6 +41,8 @@ public class patientdetailedview extends AppCompatActivity {
     LinearLayout addview,oldview;
     RecyclerView oldpriscriptionview;
     FirestoreRecyclerAdapter prescriptionadp;
+    private List<String> bplist = new ArrayList<>();
+    private List<String> bglist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,8 @@ public class patientdetailedview extends AppCompatActivity {
                 userdataupdater userdataupdater = documentSnapshot.toObject(userdataupdater.class);
                 name.setText(userdataupdater.getName());
                 age.setText(userdataupdater.getAge());
+                bglist = userdataupdater.getBglist();
+                bplist = userdataupdater.getBplist();
             }
         });
         addprescription.setOnClickListener(new View.OnClickListener() {
@@ -90,8 +96,10 @@ public class patientdetailedview extends AppCompatActivity {
               discriptio = prescriptionnote.getText().toString();
               dbgtxt = dbg.getText().toString().trim();
               dbptxt = dbp.getText().toString().trim();
+              bglist.add(dbgtxt);
+              bplist.add(dbptxt);
               if (!dbgtxt.isEmpty() && !dbptxt.isEmpty()){
-                  db.collection("Doctorappuserdata").document(patientuid).update("bg",dbgtxt,"bp",dbptxt);
+                  db.collection("Doctorappuserdata").document(patientuid).update("bg",dbgtxt,"bp",dbptxt,"bglist",bglist,"bplist",bplist);
               }
               if (datetxt.isEmpty() || discriptio.isEmpty()){
                   Toast.makeText(patientdetailedview.this, "fill the form", Toast.LENGTH_SHORT).show();

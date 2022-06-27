@@ -1,5 +1,6 @@
 package com.m24.seeditfarmer;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,12 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -26,11 +32,15 @@ import helperclass.*;
 
 
 public class profile extends Fragment {
+    TextView logouttxt;
     EditText personnameed,emailided,addressed,phoneno;
     Button submit;
     CircleImageView personprofileimage;
     FirebaseFirestore db;
+    private FirebaseAuth mAuth;
     String uid,selected,nametxt,emailidtxt,addresstxt,phonenotxt,pbptxt,pbgtxt;
+    private List<String> bplist = new ArrayList<>();
+    private List<String> bglist = new ArrayList<>();
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -66,6 +76,7 @@ public class profile extends Fragment {
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         SharedPreferences settings = getActivity().getSharedPreferences("preference", MODE_PRIVATE);
         uid = settings.getString("uid", "");
         selected = settings.getString("selector","");
@@ -76,7 +87,22 @@ public class profile extends Fragment {
         addressed = view.findViewById(R.id.personaddress);
         phoneno = view.findViewById(R.id.personphonenumber);
         submit = view.findViewById(R.id.submit);
+        logouttxt = view.findViewById(R.id.logout);
         //Toast.makeText(getActivity(), selected, Toast.LENGTH_SHORT).show();
+        logouttxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences settings = getActivity().getSharedPreferences("preference", MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("uid", "");
+                editor.putString("selector", "");
+                editor.commit();
+                mAuth.signOut();
+                Intent back = new Intent(getActivity(),MainActivity.class);
+                startActivity(back);
+                getActivity().finish();
+            }
+        });
             if (selected.equals("doctor")) {
                 addressed.setVisibility(View.GONE);
                 db.collection("Doctorappdoctordata").document(uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -106,6 +132,8 @@ public class profile extends Fragment {
                         phoneno.setText(userdataupdater.getPhonenumber());
                         pbptxt = userdataupdater.getBp();
                         pbgtxt = userdataupdater.getBg();
+                        bplist = userdataupdater.getBplist();
+                        bglist = userdataupdater.getBglist();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -127,7 +155,7 @@ public class profile extends Fragment {
                             Toast.makeText(getContext(), "Empty feilds!", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            userdataupdater userdataupdater = new userdataupdater(uid,nametxt,emailidtxt,phonenotxt,"",selected,addresstxt,pbptxt,pbgtxt);
+                            userdataupdater userdataupdater = new userdataupdater(uid,nametxt,emailidtxt,phonenotxt,"",selected,addresstxt,pbptxt,pbgtxt,bplist,bglist);
                             db.collection("Doctorappuserdata").document(uid).set(userdataupdater).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {

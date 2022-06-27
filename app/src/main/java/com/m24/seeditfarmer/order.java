@@ -94,12 +94,18 @@ public class order extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull orderview holder, int position, @NonNull bookingupdater model) {
+                //Toast.makeText(getContext(), model.getUserid(), Toast.LENGTH_SHORT).show();
                db.collection("Doctorappuserdata").document(model.getUserid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                    @Override
                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                       userdataupdater userdataupdater = documentSnapshot.toObject(userdataupdater.class);
-                    holder.drname.setText(userdataupdater.getName());
-                    holder.book.setVisibility(View.GONE);
+                       if (documentSnapshot != null){
+                           userdataupdater userdataupdaterd = documentSnapshot.toObject(userdataupdater.class);
+                           holder.drname.setText(userdataupdaterd.getName());
+                           holder.book.setVisibility(View.GONE);
+                       }else {
+                           Toast.makeText(getContext(),"null", Toast.LENGTH_SHORT).show();
+                       }
+
                    }
                });
             }

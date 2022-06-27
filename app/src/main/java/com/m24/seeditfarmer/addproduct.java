@@ -25,6 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import helperclass.*;
@@ -41,6 +43,8 @@ public class addproduct extends AppCompatActivity {
     private FirebaseStorage storage;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
+    private List<String> bplist = new ArrayList<>();
+    private List<String> bglist = new ArrayList<>();
 
     int n = 0;
 
@@ -101,7 +105,9 @@ public class addproduct extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         uids = authResult.getUser().getUid();
-                        userdataupdater user = new userdataupdater(uids,adpatientnametext,adpatientemailtext,adpatientphoneno,"","patient",agetxt,addbptxt,addbgtxt);
+                        bplist.add(addbptxt);
+                        bglist.add(addbgtxt);
+                        userdataupdater user = new userdataupdater(uids,adpatientnametext,adpatientemailtext,adpatientphoneno,"","patient",agetxt,addbptxt,addbgtxt,bplist,bglist);
                             db.collection("Doctorappuserdata").document(adpatientemailtext).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {

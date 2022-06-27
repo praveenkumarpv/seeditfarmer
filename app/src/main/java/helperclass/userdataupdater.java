@@ -1,5 +1,7 @@
 package helperclass;
 
+import java.util.List;
+
 public class userdataupdater {
     String uid;
     String name;
@@ -8,6 +10,8 @@ public class userdataupdater {
     String address;
     String selector;
     String age,bp,bg;
+    List<String>bplist;
+    List<String>bglist;
     public userdataupdater() {
     }
 
@@ -22,7 +26,7 @@ public class userdataupdater {
         this.selector = selector;
     }
 
-    public userdataupdater(String uid, String name, String emailid, String phonenumber, String address, String selector, String age, String bp, String bg) {
+    public userdataupdater(String uid, String name, String emailid, String phonenumber, String address, String selector, String age, String bp, String bg, List<String> bplist, List<String> bglist) {
         this.uid = uid;
         this.name = name;
         this.emailid = emailid;
@@ -32,6 +36,8 @@ public class userdataupdater {
         this.age = age;
         this.bp = bp;
         this.bg = bg;
+        this.bplist = bplist;
+        this.bglist = bglist;
     }
 
     public String getBp() {
@@ -104,5 +110,21 @@ public class userdataupdater {
 
     public void setSelector(String selector) {
         this.selector = selector;
+    }
+
+    public List<String> getBplist() {
+        return bplist;
+    }
+
+    public void setBplist(List<String> bplist) {
+        this.bplist = bplist;
+    }
+
+    public List<String> getBglist() {
+        return bglist;
+    }
+
+    public void setBglist(List<String> bglist) {
+        this.bglist = bglist;
     }
 }
