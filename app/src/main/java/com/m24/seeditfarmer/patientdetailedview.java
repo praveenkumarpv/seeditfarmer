@@ -96,8 +96,6 @@ public class patientdetailedview extends AppCompatActivity {
               discriptio = prescriptionnote.getText().toString();
               dbgtxt = dbg.getText().toString().trim();
               dbptxt = dbp.getText().toString().trim();
-              bglist.add(dbgtxt);
-              bplist.add(dbptxt);
               if (!dbgtxt.isEmpty() && !dbptxt.isEmpty()){
                   db.collection("Doctorappuserdata").document(patientuid).update("bg",dbgtxt,"bp",dbptxt,"bglist",bglist,"bplist",bplist);
               }
