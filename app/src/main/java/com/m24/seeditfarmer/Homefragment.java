@@ -30,9 +30,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +45,6 @@ public class Homefragment extends Fragment {
     FirestoreRecyclerAdapter farmeradapter,useradapter;
     ConstraintLayout doctorv,patientv;
     TextView welcomenote,bgtv,bptv;
-    GraphView bpgraph,bggraph;
     private List<String> bplist = new ArrayList<>();
     private List<String> bglist = new ArrayList<>();
     int bplength,bglength;
@@ -100,8 +96,6 @@ public class Homefragment extends Fragment {
         welcomenote = view.findViewById(R.id.welcomenote);
         bgtv = view.findViewById(R.id.bgtextview);
         bptv = view.findViewById(R.id.bptextview);
-        bpgraph = view.findViewById(R.id.bpgraph);
-        bggraph = view.findViewById(R.id.bggraph);
         addfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,17 +152,6 @@ public class Homefragment extends Fragment {
 //            productrecycler.setAdapter(farmeradapter);
         }
         else{
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                    new DataPoint(0, 1),
-                    new DataPoint(1, 5),
-                    new DataPoint(2, 3),
-                    new DataPoint(3, 2),
-                    new DataPoint(4, 6)
-            });
-            bggraph.addSeries(series);
-            bpgraph.addSeries(series);
-            series.setColor(Color.RED);
-            bpgraph.getGridLabelRenderer().setGridColor(Color.WHITE);
             FirebaseFirestore.getInstance().collection("Doctorappuserdata").document(uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -176,10 +159,6 @@ public class Homefragment extends Fragment {
                     welcomenote.setText("Hello,"+userdataupdater.getName());
                     bgtv.setText(userdataupdater.getBg());
                     bptv.setText(userdataupdater.getBp());
-                    bplist = userdataupdater.getBplist();
-                    bglist = userdataupdater.getBglist();
-                    bplength = bplist.size();
-                    bglength = bglist.size();
                     Toast.makeText(getContext(),String.valueOf(bplength), Toast.LENGTH_SHORT).show();
                     Toast.makeText(getContext(),String.valueOf(bglength), Toast.LENGTH_SHORT).show();
 
