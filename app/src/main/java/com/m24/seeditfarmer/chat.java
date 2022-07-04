@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -29,7 +31,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class chat extends Fragment {
     RecyclerView allchat;
-    String uid,selected;
+    String uid,selected,docid;
     FirestoreRecyclerAdapter allchatadapterf,allchatadapteru;
     private FirebaseFirestore db;
 
@@ -87,29 +89,29 @@ public class chat extends Fragment {
 
                 @Override
                 protected void onBindViewHolder(@NonNull allchatholder holder, int position, @NonNull chatdatabaseupdater model) {
-                    db.collection("userdata").document(model.getUserid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            userdataupdater user = documentSnapshot.toObject(userdataupdater.class);
-                            holder.name.setText(user.getName());
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                        }
-                    });
-                    holder.chatlistlayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent chat = new Intent(getActivity(), chatview.class);
-                            chat.putExtra("chatinguseruid",model.getUserid());
-                            chat.putExtra("chatfarmeruid",model.getFarmerid());
-                            chat.putExtra("product",model.getProductname());
-                            chat.putExtra("uniqueid",model.getDatabaseid());
-                            startActivity(chat);
-                        }
-                    });
+//                    db.collection("userdata").document(model.getUserid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                        @Override
+//                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                            userdataupdater user = documentSnapshot.toObject(userdataupdater.class);
+//                            holder.name.setText(user.getName());
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//
+//                        }
+//                    });
+//                    holder.chatlistlayout.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            Intent chat = new Intent(getActivity(), chatview.class);
+//                            chat.putExtra("chatinguseruid",model.getUserid());
+//                            chat.putExtra("chatfarmeruid",model.getFarmerid());
+//                            chat.putExtra("product",model.getProductname());
+//                            chat.putExtra("uniqueid",model.getDatabaseid());
+//                            startActivity(chat);
+//                        }
+//                    });
                 }
             };
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -120,41 +122,43 @@ public class chat extends Fragment {
             allchat.setAdapter(allchatadapterf);
         }
         else{
-            Query allchatqueryf = FirebaseFirestore.getInstance().collection("userdata").document(uid).collection("chat");
-            FirestoreRecyclerOptions<chatdatabaseupdater> allchatf = new FirestoreRecyclerOptions.Builder<chatdatabaseupdater>()
-                    .setQuery(allchatqueryf, chatdatabaseupdater.class)
+//            Toast.makeText(getContext(), "bhjhhnfb", Toast.LENGTH_SHORT).show();
+            Query orders = db.collection("booking").whereEqualTo("userid",uid);
+            FirestoreRecyclerOptions<bookingupdater> orderviewbuilder = new FirestoreRecyclerOptions.Builder<bookingupdater>()
+                    .setQuery(orders, bookingupdater.class)
                     .build();
-            allchatadapteru = new FirestoreRecyclerAdapter<chatdatabaseupdater,allchatholder>(allchatf){
+            allchatadapteru = new FirestoreRecyclerAdapter<bookingupdater,allchatholder>(orderviewbuilder){
+
                 @NonNull
                 @Override
                 public allchatholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chatlist,parent,false);
+                    View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.drbook,parent,false);
                     return new allchatholder(view);
                 }
 
                 @Override
-                protected void onBindViewHolder(@NonNull allchatholder holder, int position, @NonNull chatdatabaseupdater model) {
-                    db.collection("farmerdata").document(model.getFarmerid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            farmerdataupdater farmerdataupdater = documentSnapshot.toObject(farmerdataupdater.class);
-                            holder.name.setText(farmerdataupdater.getName());
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                        }
-                    });
-                    holder.chatlistlayout.setOnClickListener(new View.OnClickListener() {
+                protected void onBindViewHolder(@NonNull allchatholder holder, int position, @NonNull bookingupdater model) {
+                    holder.book.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent chat = new Intent(getActivity(), chatview.class);
-                            chat.putExtra("chatinguseruid",model.getUserid());
-                            chat.putExtra("chatfarmeruid",model.getFarmerid());
-                            chat.putExtra("product",model.getProductname());
-                            chat.putExtra("uniqueid",model.getDatabaseid());
-                            startActivity(chat);
+                            db.collection("booking").document(model.getUid()).delete();
+                        }
+                    });
+                    db.collection("Doctorappdoctordata").document(model.getDrid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot != null){
+                                doctordata doctordata  = documentSnapshot.toObject(doctordata.class);
+                                holder.drname.setText(doctordata.getName());
+                                holder.book.setText("Cancel");
+                                holder.datetv.setVisibility(View.VISIBLE);
+                                holder.timetv.setVisibility(View.VISIBLE);
+                                holder.datetv.setText("Date : "+model.getDate());
+                                holder.timetv.setText("Time : "+model.getTime());
+                            }else {
+                                Toast.makeText(getContext(),"null", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                     });
                 }
@@ -170,12 +174,15 @@ public class chat extends Fragment {
     }
 
     private class allchatholder extends RecyclerView.ViewHolder {
-        TextView name;
-        ConstraintLayout chatlistlayout;
+        TextView drname,timetv,datetv;
+        Button book;
         public allchatholder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.chatname);
-            chatlistlayout = itemView.findViewById(R.id.chatlist);
+            timetv = itemView.findViewById(R.id.times);
+            datetv = itemView.findViewById(R.id.dates);
+//            orderviewaddress = itemView.findViewById(R.id.orderproductaddress);
+            book= itemView.findViewById(R.id.drbookbutton);
+            drname = itemView.findViewById(R.id.drname);
         }
     }
     @Override

@@ -102,6 +102,10 @@ public class order extends Fragment {
                            userdataupdater userdataupdaterd = documentSnapshot.toObject(userdataupdater.class);
                            holder.drname.setText(userdataupdaterd.getName());
                            holder.book.setVisibility(View.GONE);
+                           holder.datetv.setVisibility(View.VISIBLE);
+                           holder.timetv.setVisibility(View.VISIBLE);
+                           holder.datetv.setText("Date : "+model.getDate());
+                           holder.timetv.setText("Time : "+model.getTime());
                        }else {
                            Toast.makeText(getContext(),"null", Toast.LENGTH_SHORT).show();
                        }
@@ -121,12 +125,12 @@ public class order extends Fragment {
 
 
     private class orderview extends RecyclerView.ViewHolder {
-       TextView orderviewname,orderviewprice,orderviewaddress,drname;
+       TextView drname,timetv,datetv;
         Button book;
         public orderview(@NonNull View itemView) {
             super(itemView);
-//            orderviewname = itemView.findViewById(R.id.orderproductname);
-//            orderviewprice = itemView.findViewById(R.id.orderproductprice);
+            timetv = itemView.findViewById(R.id.times);
+            datetv = itemView.findViewById(R.id.dates);
 //            orderviewaddress = itemView.findViewById(R.id.orderproductaddress);
             book= itemView.findViewById(R.id.drbookbutton);
             drname = itemView.findViewById(R.id.drname);

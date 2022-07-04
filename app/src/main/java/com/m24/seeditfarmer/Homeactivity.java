@@ -54,10 +54,10 @@ public class Homeactivity extends AppCompatActivity {
                         fragment = new Homefragment();
                         fragmenttransation(fragment);
                         break;
-//                    case R.id.chat:
-//                        fragment = new chat();
-//                        fragmenttransation(fragment);
-//                        break;
+                    case R.id.chat:
+                        fragment = new chat();
+                        fragmenttransation(fragment);
+                        break;
                     case R.id.myorder:
                         fragment = new myorder();
                         fragmenttransation(fragment);
